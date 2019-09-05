@@ -205,19 +205,19 @@ export const getVideoCategoryIds = createSelector(
   }
 );
 
-// export const getVideosByCategory = createSelector(
-//   state => state.videos.byCategory,
-//   state => state.videos.byId,
-//   state => state.videos.categories,
-//   (videosByCategory, videosById, categories) => {
-//     return Object.keys(videosByCategory || {}).reduce((accumulator, categoryId) => {
-//       const videoIds = videosByCategory[categoryId].items;
-//       const categoryTitle = categories[categoryId];
-//       accumulator[categoryTitle] = videoIds.map(videoId => videosById[videoId]);
-//       return accumulator;
-//     }, {});
-//   }
-// );
+export const getVideosByCategory = createSelector(
+  state => state.videos.byCategory,
+  state => state.videos.byId,
+  state => state.videos.categories,
+  (videosByCategory, videosById, categories) => {
+    return Object.keys(videosByCategory || {}).reduce((accumulator, categoryId) => {
+      const videoIds = videosByCategory[categoryId].items;
+      const categoryTitle = categories[categoryId];
+      accumulator[categoryTitle] = videoIds.map(videoId => videosById[videoId]);
+      return accumulator;
+    }, {});
+  }
+);
 
 export const videoCategoriesLoaded = createSelector(
   state => state.videos.categories,
