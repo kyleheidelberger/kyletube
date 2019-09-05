@@ -3,7 +3,7 @@ import {WATCH_DETAILS} from '../actions/watch';
 import {COMMENT_THREAD_LIST_RESPONSE} from '../api/youtube-api-response-types';
 import {createSelector} from 'reselect';
 import {COMMENT_THREAD} from '../actions/comment';
-import {getSearchParam} from '../../services/url';
+// import {getSearchParam} from '../../services/url';
 
 const initialState = {
   byVideo: {},
@@ -75,13 +75,13 @@ export const getCommentsForVideo = createSelector(
   }
 );
 
-const getComment = (state, location) => {
-  const videoId = getSearchParam(location, 'v');
-  return state.comments.byVideo[videoId];
-};
-export const getCommentNextPageToken = createSelector(
-  getComment,
-  (comment) => {
-    return comment ? comment.nextPageToken : null;
-  }
-);
+// const getComment = (state, location) => {
+//   const videoId = getSearchParam(location, 'v');
+//   return state.comments.byVideo[videoId];
+// };
+// export const getCommentNextPageToken = createSelector(
+//   getComment,
+//   (comment) => {
+//     return comment ? comment.nextPageToken : null;
+//   }
+// );
