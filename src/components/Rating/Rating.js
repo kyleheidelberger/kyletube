@@ -1,7 +1,7 @@
 import React from 'react';
 import './Rating.scss';
 import {Icon, Progress} from "semantic-ui-react";
-// import {getShortNumberString} from '../../services/number/number-format';
+import {getShortNumberString} from '../../services/number/number-format';
 
 export function Rating(props) {
   let rating = null;
@@ -14,8 +14,8 @@ export function Rating(props) {
     const percentagePositiveRatings = 100.0 * (amountLikes / (amountLikes + amountDislikes));
 
     // Now that we have calculated the percentage, we bring the numbers into a better readable format
-    // likeCount = getShortNumberString(amountLikes);
-    // dislikeCount = getShortNumberString(amountDislikes);
+    likeCount = getShortNumberString(amountLikes);
+    dislikeCount = getShortNumberString(amountDislikes);
     rating = <Progress percent={percentagePositiveRatings} size='tiny'/>;
   }
   return (

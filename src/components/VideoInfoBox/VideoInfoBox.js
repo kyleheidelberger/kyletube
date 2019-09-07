@@ -1,8 +1,8 @@
 import React from 'react';
 import './VideoInfoBox.scss';
 import {Image, Button, Divider} from 'semantic-ui-react';
-// import Linkify from 'react-linkify';
-// import {getPublishedAtDateString} from '../../services/date/date-format';
+import Linkify from 'react-linkify';
+import {getPublishedAtDateString} from '../../services/date/date-format';
 // import {getShortNumberString} from '../../services/number/number-format';
 
 export class VideoInfoBox extends React.Component {
@@ -20,7 +20,7 @@ export class VideoInfoBox extends React.Component {
 
     const descriptionParagraphs = this.getDescriptionParagraphs();
     const {descriptionTextClass, buttonTitle} = this.getConfig();
-    // const publishedAtString = getPublishedAtDateString(this.props.video.snippet.publishedAt);
+    const publishedAtString = getPublishedAtDateString(this.props.video.snippet.publishedAt);
 
     const {channel} = this.props;
     const buttonText = this.getSubscriberButtonText();
@@ -33,7 +33,7 @@ export class VideoInfoBox extends React.Component {
           <Image className='channel-image' src={channelThumbnail} circular/>
           <div className="video-info">
             <div className='channel-name'>{channelTitle}</div>
-            {/* <div className='video-publication-date'>{publishedAtString}</div> */}
+            <div className='video-publication-date'>{publishedAtString}</div>
           </div>
           <Button className='subscribe' color='youtube'>{buttonText}</Button>
           <div className="video-description">
@@ -61,7 +61,7 @@ export class VideoInfoBox extends React.Component {
     if (!videoDescription) {
       return null;
     }
-    // return videoDescription.split('\n').map((paragraph, index) => <p key={index}><Linkify>{paragraph}</Linkify></p>);
+    return videoDescription.split('\n').map((paragraph, index) => <p key={index}><Linkify>{paragraph}</Linkify></p>);
   }
 
   getSubscriberButtonText() {
