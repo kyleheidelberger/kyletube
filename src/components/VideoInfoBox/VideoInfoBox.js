@@ -3,7 +3,7 @@ import './VideoInfoBox.scss';
 import {Image, Button, Divider} from 'semantic-ui-react';
 import Linkify from 'react-linkify';
 import {getPublishedAtDateString} from '../../services/date/date-format';
-// import {getShortNumberString} from '../../services/number/number-format';
+import {getShortNumberString} from '../../services/number/number-format';
 
 export class VideoInfoBox extends React.Component {
   constructor(props) {
@@ -67,8 +67,8 @@ export class VideoInfoBox extends React.Component {
   getSubscriberButtonText() {
     const {channel} = this.props;
     const parsedSubscriberCount = Number(channel.statistics.subscriberCount);
-    // const subscriberCount = getShortNumberString(parsedSubscriberCount);
-    // return `Subscribe ${subscriberCount}`;
+    const subscriberCount = getShortNumberString(parsedSubscriberCount);
+    return `Subscribe ${subscriberCount}`;
   }
 
   getConfig() {
